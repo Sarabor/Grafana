@@ -47,9 +47,22 @@ Wie erstelle ich eine Dashboard.json aus einer Dashboard.jsonnet?
 
 Wie deploye ich eine Dashboard.json in Grafana?
 
-      
+1. Über Grafana UI links im Menu mit der Maus über das Plus hovern
+2. Den 3. Punkt "Import" auswählen
+3. "Upload JSON file" auswählen und erstelltes JSON hochladen
+4. Order für Dashboard auswählen und bestätigen
+5. Dashboard liegt nun im ausgewählten Ordner vor und kann getestet werden
 
 Entwicklerworkflow
+
+1. Dashboard.Jsonnet schreiben
+2. Code commiten & pushen
+3. Checkout aus Repository
+4. Kompilieren
+5. Testen
+6. Kompilat hochladen
+7. Kompilat deplyoen
+
 
 
 Schritt für Schritt anleitung, um Dashboards und deployen
