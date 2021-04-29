@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  grafana:
+    image: grafana/grafana:latest
+    restart: always
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-storage:/var/lib/grafana
+      - type: bind
+        source: ./provisioning
+        target: /etc/grafana/provisioning
+
+volumes:
+  grafana-storage:
