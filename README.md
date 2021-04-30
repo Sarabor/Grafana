@@ -2,22 +2,22 @@
 Everything you need to get started to use Grafana
 
 
-Zum Einrichten von Grafana
+##Zum Einrichten von Grafana
 
-Für Container
+### Für Container
 
 1. docker-compose up -d auszuführen, um Grafana Image zu installieren und Container zu starten.
 
-Für Jsonnet
+### Für Jsonnet
 
 2. go lang installieren https://golang.org/
    
 3. Speicherort für Library wählen und in der Konsole folgende Befehle ausführen 
    
-   Package Downloaden
+   #### Package Downloaden
    
         go get github.com/google/go-jsonnet/cmd/jsonnet
-   Zum Builden
+   #### Zum Builden
    
         git clone https://github.com/google/go-jsonnet.git
         cd go-jsonnet
@@ -25,7 +25,7 @@ Für Jsonnet
         go build ./cmd/jsonnetfmt
         go build ./cmd/jsonnet-deps
 
-Für Grafonnet
+### Für Grafonnet
 
 4. Speicherort für Library wählen und in der Konsole folgenden Befehl ausführen 
    
@@ -36,7 +36,7 @@ Für Grafonnet
 Provisioning Testdatenbank Oder Bash Script Testdatenbank?
 
 
-Wie erstelle ich eine Dashboard.json aus einer Dashboard.jsonnet?
+### Wie erstelle ich eine Dashboard.json aus einer Dashboard.jsonnet?
 
 1. Dashboard.jsonnet schreiben
 2. In Windows Powershell
@@ -45,7 +45,7 @@ Wie erstelle ich eine Dashboard.json aus einer Dashboard.jsonnet?
 
 3. Dashboard.json liegt nun im gleichen Ordner als Datei vor
 
-Wie deploye ich eine Dashboard.json in Grafana?
+### Wie deploye ich eine Dashboard.json in Grafana?
 
 1. Über Grafana UI links im Menu mit der Maus über das Plus hovern
 2. Den 3. Punkt "Import" auswählen
@@ -53,7 +53,7 @@ Wie deploye ich eine Dashboard.json in Grafana?
 4. Order für Dashboard auswählen und bestätigen
 5. Dashboard liegt nun im ausgewählten Ordner vor und kann getestet werden
 
-Entwicklerworkflow
+## Entwicklerworkflow
 
 1. Dashboard.Jsonnet schreiben
 2. Code commiten & pushen
@@ -64,5 +64,3 @@ Entwicklerworkflow
 7. Kompilat deplyoen
 
 
-
-Schritt für Schritt anleitung, um Dashboards und deployen

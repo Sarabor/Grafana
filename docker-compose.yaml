@@ -6,11 +6,13 @@ services:
     restart: always
     ports:
       - "3000:3000"
+
     volumes:
-      - grafana-storage:/var/lib/grafana
-      - type: bind
-        source: ./provisioning
-        target: /etc/grafana/provisioning
+     - grafana-storage:/var/lib/grafana
+#    Für Provisioning
+#      - type: bind
+#        source: ./provisioning
+#        target: /etc/grafana/provisioning
 
 volumes:
   grafana-storage:
