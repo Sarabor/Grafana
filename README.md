@@ -2,7 +2,7 @@
 Everything you need to get started to use Grafana
 
 
-##Zum Einrichten von Grafana
+## Zum Einrichten von Grafana
 
 ### Für Container
 
@@ -39,7 +39,28 @@ Provisioning Testdatenbank Oder Bash Script Testdatenbank?
 ### Wie erstelle ich eine Dashboard.json aus einer Dashboard.jsonnet?
 
 1. Dashboard.jsonnet schreiben
-2. In Windows Powershell
+   
+Ein einfaches HelloDashboard könnte wie folgt aussehen:
+```json
+local grafana = import 'grafonnet/grafana.libsonnet';
+local dashboard = grafana.dashboard;
+local text = grafana.text;
+
+dashboard.new('HelloPanel!')
+   .addPanel(
+      text.new(
+      'HelloWorld',
+      content='HelloWorld'
+      ),
+   gridPos={
+      x: 0,
+      y: 0,
+      w: 24,
+      h: 3,
+      }
+      )
+ ```
+2. Zum Umwandeln vom JSONNET in JSON folgenden Befehl in der Powershell ausführen
    
          jsonnet -J $env:grafonnet dashboard.jsonnet > dashboard.json
 
