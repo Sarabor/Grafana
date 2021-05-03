@@ -33,8 +33,6 @@ Everything you need to get started to use Grafana
    
 5. Grafonnet Speicherort als Umgebungsvariable anlegen. Variable "grafonnet" nennen
 
-Provisioning Testdatenbank Oder Bash Script Testdatenbank?
-
 
 ### Wie erstelle ich eine Dashboard.json aus einer Dashboard.jsonnet?
 
