@@ -41,7 +41,7 @@ Provisioning Testdatenbank Oder Bash Script Testdatenbank?
 1. Dashboard.jsonnet schreiben
    
 Ein einfaches HelloDashboard könnte wie folgt aussehen:
-```json
+```jsonnet
 local grafana = import 'grafonnet/grafana.libsonnet';
 local dashboard = grafana.dashboard;
 local text = grafana.text;
