@@ -6,7 +6,9 @@ Everything you need to get started to use Grafana
 
 ### Für Container
 
-1. docker-compose up -d auszuführen, um Grafana Image zu installieren und Container zu starten.
+1. Um Grafana Image zu installieren und Container zu starten
+   
+         docker-compose up -d auszuführen
 
 ### Für Jsonnet
 
