@@ -1,6 +1,11 @@
 # Grafana
-Everything you need to get started to use Grafana
+Alles was Du brauchst, um Grafana zu benutzen
 
+## Voraussetzung für dieses Repository
+
+- Docker
+- jq
+- Git Bash
 
 ## Zum Einrichten von Grafana
 
@@ -19,6 +24,7 @@ Everything you need to get started to use Grafana
    #### Package Downloaden
    
         go get github.com/google/go-jsonnet/cmd/jsonnet
+   
    #### Zum Builden
    
         git clone https://github.com/google/go-jsonnet.git
@@ -68,11 +74,30 @@ dashboard.new('HelloPanel!')
 
 ### Wie deploye ich eine Dashboard.json in Grafana?
 
-1. Über Grafana UI links im Menu mit der Maus über das Plus hovern
-2. Den 3. Punkt "Import" auswählen
-3. "Upload JSON file" auswählen und erstelltes JSON hochladen
-4. Order für Dashboard auswählen und bestätigen
-5. Dashboard liegt nun im ausgewählten Ordner vor und kann getestet werden
+1. Authorization Token erstellen. 
+   
+   Siehe https://grafana.com/docs/grafana/latest/http_api/create-api-tokens-for-org/
+
+2. Folgende Befehle in Git Bash ausführen. <Token> hier mit dem eigenen Token austauschen.
+```bash
+   JSONNET_PATH=$grafonnet \
+   jsonnet dashboard.jsonnet > dashboard.json
+
+   payload="{\"dashboard\": $(jq . dashboard.json), \"overwrite\": true}"
+   curl -X POST --insecure -H "Authorization: Bearer <Token>" \
+   -H "Content-Type: application/json" \
+   -d "${payload}" \
+   http://localhost:3000/api/dashboards/db
+```
+3. Das Dashboard ist nun in Grafana deployed
+## ToDo
+
+- jq Installationsguide
+- Alternative zu Git Bash
+- HelloWorld verbessern
+- Größeres Beispiel Jsonnet
+- Datenbank über API deployen
+- Auth Token erstellen/ Was sind Orgs?
 
 ## Entwicklerworkflow
 
