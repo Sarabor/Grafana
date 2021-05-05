@@ -4,8 +4,18 @@ Alles was Du brauchst, um Grafana zu benutzen
 ## Voraussetzung für dieses Repository
 
 - Docker
-- jq
 - Git Bash
+
+## jq Installation
+
+### Mit Chocolatey
+1. Chocolatey per Anleitung installieren: https://chocolatey.org/install#individual
+2. git bash als Administrator ausführen
+3. Folgenden Befehl eingeben
+   
+         choco install jq
+4. Befehle der Konsole mit bestätigen
+5. jq ist installiert
 
 ## Zum Einrichten von Grafana
 
@@ -13,7 +23,7 @@ Alles was Du brauchst, um Grafana zu benutzen
 
 1. Um Grafana Image zu installieren und Container zu starten
    
-         docker-compose up -d auszuführen
+         docker-compose up -d
 
 ### Für Jsonnet
 
