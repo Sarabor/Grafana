@@ -111,7 +111,7 @@ WIP
 
 
 
-## Installtion Guide
+## Installation Guide
 
 I recommend chocolatey for installing the tools, but you can install them however you want.
 
