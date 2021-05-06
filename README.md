@@ -12,7 +12,7 @@ Everything you need to get started with Grafana in a professional environment.
 
 [Advanced usage](#advanced-usage)
 
-[Installation Guide](#nstallation-guide)
+[Installation Guide](#Installation-guide)
 
 
 ## Requirements
