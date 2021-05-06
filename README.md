@@ -17,12 +17,12 @@ Everything you need to get started with Grafana in a professional environment.
 
 # Requirements
 
-## For Quickstart
+### For Quickstart
 - Jsonnet
 - Grafonnet
 - Any console works for you. I used Git Bash
 
-## For advanced usage
+### For advanced usage
 - Docker
 - Running Grafana Container
 - jq
@@ -36,7 +36,7 @@ Everything you need to get started with Grafana in a professional environment.
 When you only want to use or test grafonnet without any additional tools or utility.
 
 
-## HelloDashboard!
+### HelloDashboard!
 
 This is a minimal dashboard with a single text panel written in Jsonnet that will generate the equivalent dashboard in JSON.
 
