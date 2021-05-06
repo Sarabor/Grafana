@@ -4,7 +4,7 @@
 
 Everything you need to get started with Grafana in a professional environment.
 
-# Overview
+## Overview
 
 [Requirements](#requirements)
 
@@ -15,7 +15,7 @@ Everything you need to get started with Grafana in a professional environment.
 [Installation Guide](#nstallation-guide)
 
 
-# Requirements
+## Requirements
 
 ### For Quickstart
 - Jsonnet
@@ -31,7 +31,7 @@ Everything you need to get started with Grafana in a professional environment.
 - Any console works for you. I used Git Bash
 
 
-# Quick start
+## Quick start
 
 When you only want to use or test grafonnet without any additional tools or utility.
 
@@ -66,19 +66,19 @@ jsonnet -J grafonnet-lib dashboard.jsonnet
 Grafonnet-lib must be exchanged for the path to the grafonnet-lib folder.
 You will get a dashboard JSON that is ready to be imported into Grafana.
 
-# Advanced Usage
+## Advanced Usage
 
 This is when you want to get a smoother development experience and make use of the Grafana API. 
 
-## Initial Configuration
+### Initial Configuration
 
 To use the Grafonnet library effectively, I recommend some configuration. 
 
-### Path to Grafonnet
+#### Path to Grafonnet
 
 Set a environment variable with the path to your Grafonnet Library and call it 'grafonnet'.
 
-### Authorization Token
+#### Authorization Token
 
 Create or request an Authorization Token to use the Grafana API to import dashboards.
 This step is necessary to use the Grafana API.
@@ -88,7 +88,7 @@ curl -X POST -H "Content-Type: application/json" -d '{"name":"<Tokenname>", "rol
 ```
 Insert a name for the token in \<Tokenname\>. You will get a token. Save it somewhere, because you will not be able to access it again.
 
-## Deploying a dashboard
+### Deploying a dashboard
 
 To deploy a dashboard with the Grafana API execute
 
@@ -104,27 +104,27 @@ http://localhost:3000/api/dashboards/db
 ```
 Go to the dashboard overview in Grafana and refresh it. Your dashboard is now deployed.
 
-### Deploy a data source
+#### Deploy a data source
 
 WIP
 
 
 
 
-# Installtion Guide
+## Installtion Guide
 
 I recommend chocolatey for installing the tools, but you can install them however you want.
 
 To install chocolatey visit https://chocolatey.org/install
 
-## Docker Desktop, jq and Golang
+### Docker Desktop, jq and Golang
 Here are the commands in chocolatey to download the required tools
 
       choco install jq
       choco install docker-desktop
       choco install golang
 
-## Grafana installation
+### Grafana installation
 
 Execute
 ```shell
@@ -132,7 +132,7 @@ docker-compose up -d
 ```
 This will create a Grafana image and start a Grafana container with persistent storage.
 
-## Jsonnet
+### Jsonnet
 Execute
 
 ```shell
@@ -148,7 +148,7 @@ go build ./cmd/jsonnetfmt
 go build ./cmd/jsonnet-deps
 ```
 
-## Grafonnet
+### Grafonnet
 
 Choose a folder for the Grafonnet Library and clone the repository.
 
