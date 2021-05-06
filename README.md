@@ -20,7 +20,7 @@ Everything you need to get started with Grafana in a professional environment.
 ### For Quickstart
 - Jsonnet
 - Grafonnet
-- Any console works for you. I used Git Bash
+- Any console that works for you. I used Git Bash
 
 ### For advanced usage
 - Docker
@@ -28,7 +28,7 @@ Everything you need to get started with Grafana in a professional environment.
 - jq
 - Jsonnet
 - Grafonnet
-- Any console works for you. I used Git Bash
+- Any console that works for you. I used Git Bash
 
 
 ## Quick start
