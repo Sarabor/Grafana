@@ -1,7 +1,8 @@
 # Grafana
-Alles was Du brauchst, um Grafana zu benutzen
+Everything you need to get started with Grafana
 
-## Voraussetzung für dieses Repository
+# Real Cool Heading
+[Go to Real Cool Heading section](#real-cool-heading)
 
 - Docker
 - Git Bash
@@ -75,28 +76,26 @@ dashboard.new('HelloPanel!')
       }
    )
  ```
-2. Zum Umwandeln vom JSONNET in JSON folgenden Befehl in der Powershell ausführen
-   
-         jsonnet -J $env:grafonnet dashboard.jsonnet > dashboard.json
-
-3. Dashboard.json liegt nun im gleichen Ordner als Datei vor
 
 ### Wie deploye ich eine Dashboard.json in Grafana?
 
-1. Authorization Token erstellen. 
+1. Authorization Token erstellen. \<Tokenname\> mit Namen für das Token austauschen.
    
-   Siehe https://grafana.com/docs/grafana/latest/http_api/create-api-tokens-for-org/
+```bash
+curl -X POST -H "Content-Type: application/json" -d '{"name":"<Tokenname>", "role": "Admin"}' http://admin:admin@localhost:3000/api/auth/keys
+```
+   Für mehr Informationen zu Authorization Token siehe https://grafana.com/docs/grafana/latest/http_api/create-api-tokens-for-org/
 
 2. Folgende Befehle in Git Bash ausführen. <Token> hier mit dem eigenen Token austauschen.
 ```bash
-   JSONNET_PATH=$grafonnet \
-   jsonnet dashboard.jsonnet > dashboard.json
+JSONNET_PATH=$grafonnet \
+jsonnet dashboard.jsonnet > dashboard.json
 
-   payload="{\"dashboard\": $(jq . dashboard.json), \"overwrite\": true}"
-   curl -X POST --insecure -H "Authorization: Bearer <Token>" \
-   -H "Content-Type: application/json" \
-   -d "${payload}" \
-   http://localhost:3000/api/dashboards/db
+payload="{\"dashboard\": $(jq . dashboard.json), \"overwrite\": true}"
+curl -X POST --insecure -H "Authorization: Bearer <Token>" \
+-H "Content-Type: application/json" \
+-d "${payload}" \
+http://localhost:3000/api/dashboards/db
 ```
 3. Das Dashboard ist nun in Grafana deployed
 ## ToDo
