@@ -1,63 +1,45 @@
-# Grafana
-Everything you need to get started with Grafana
+![Logo of the project](https://cdn.freelogovectors.net/wp-content/uploads/2018/07/grafana-logo.png)
 
-# Real Cool Heading
-[Go to Real Cool Heading section](#real-cool-heading)
+# Grafana with Grafonnet
 
+Everything you need to get started with Grafana in a professional environment.
+
+# Overview
+
+[Requirements](#requirements)
+
+[Quick Start](#quick-start)
+
+[Advanced usage](#advanced-usage)
+
+[Installation Guide](#nstallation-guide)
+
+
+# Requirements
+
+## For Quickstart
+- Jsonnet
+- Grafonnet
+- Any console works for you. I used Git Bash
+
+## For advanced usage
 - Docker
-- Git Bash
-
-## jq Installation
-
-### Mit Chocolatey
-1. Chocolatey per Anleitung installieren: https://chocolatey.org/install#individual
-2. git bash als Administrator ausführen
-3. Folgenden Befehl eingeben
-   
-         choco install jq
-4. Befehle der Konsole mit bestätigen
-5. jq ist installiert
-
-## Zum Einrichten von Grafana
-
-### Für Container
-
-1. Um Grafana Image zu installieren und Container zu starten
-   
-         docker-compose up -d
-
-### Für Jsonnet
-
-2. go lang installieren https://golang.org/
-   
-3. Speicherort für Library wählen und in der Konsole folgende Befehle ausführen 
-   
-   #### Package Downloaden
-   
-        go get github.com/google/go-jsonnet/cmd/jsonnet
-   
-   #### Zum Builden
-   
-        git clone https://github.com/google/go-jsonnet.git
-        cd go-jsonnet
-        go build ./cmd/jsonnet
-        go build ./cmd/jsonnetfmt
-        go build ./cmd/jsonnet-deps
-
-### Für Grafonnet
-
-4. Speicherort für Library wählen und in der Konsole folgenden Befehl ausführen 
-   
-         git clone https://github.com/grafana/grafonnet-lib.git
-   
-5. Grafonnet Speicherort als Umgebungsvariable anlegen. Variable "grafonnet" nennen
+- Running Grafana Container
+- jq
+- Jsonnet
+- Grafonnet
+- Any console works for you. I used Git Bash
 
 
-### Wie erstelle ich eine Dashboard.json aus einer Dashboard.jsonnet?
+# Quick start
 
-1. Dashboard.jsonnet schreiben
-   
-Ein einfaches HelloDashboard könnte wie folgt aussehen:
+When you only want to use or test grafonnet without any additional tools or utility.
+
+
+## HelloDashboard!
+
+This is a minimal dashboard with a single text panel written in Jsonnet that will generate the equivalent dashboard in JSON.
+
 ```jsonnet
 local grafana = import 'grafonnet/grafana.libsonnet';
 local dashboard = grafana.dashboard;
@@ -77,17 +59,40 @@ dashboard.new('HelloPanel!')
    )
  ```
 
-### Wie deploye ich eine Dashboard.json in Grafana?
+Once you have your Jsonnet Code execute
+```shell
+jsonnet -J grafonnet-lib dashboard.jsonnet 
+```
+Grafonnet-lib must be exchanged for the path to the grafonnet-lib folder.
+You will get a dashboard JSON that is ready to be imported into Grafana.
 
-1. Authorization Token erstellen. \<Tokenname\> mit Namen für das Token austauschen.
-   
-```bash
+# Advanced Usage
+
+This is when you want to get a smoother development experience and make use of the Grafana API. 
+
+## Initial Configuration
+
+To use the Grafonnet library effectively, I recommend some configuration. 
+
+### Path to Grafonnet
+
+Set a environment variable with the path to your Grafonnet Library and call it 'grafonnet'.
+
+### Authorization Token
+
+Create or request an Authorization Token to use the Grafana API to import dashboards.
+This step is necessary to use the Grafana API.
+To get create a token execute:
+```shell
 curl -X POST -H "Content-Type: application/json" -d '{"name":"<Tokenname>", "role": "Admin"}' http://admin:admin@localhost:3000/api/auth/keys
 ```
-   Für mehr Informationen zu Authorization Token siehe https://grafana.com/docs/grafana/latest/http_api/create-api-tokens-for-org/
+Insert a name for the token in \<Tokenname\>. You will get a token. Save it somewhere, because you will not be able to access it again.
 
-2. Folgende Befehle in Git Bash ausführen. <Token> hier mit dem eigenen Token austauschen.
-```bash
+## Deploying a dashboard
+
+To deploy a dashboard with the Grafana API execute
+
+```shell
 JSONNET_PATH=$grafonnet \
 jsonnet dashboard.jsonnet > dashboard.json
 
@@ -97,24 +102,57 @@ curl -X POST --insecure -H "Authorization: Bearer <Token>" \
 -d "${payload}" \
 http://localhost:3000/api/dashboards/db
 ```
-3. Das Dashboard ist nun in Grafana deployed
-## ToDo
+Go to the dashboard overview in Grafana and refresh it. Your dashboard is now deployed.
 
-- jq Installationsguide
-- Alternative zu Git Bash
-- HelloWorld verbessern
-- Größeres Beispiel Jsonnet
-- Datenbank über API deployen
-- Auth Token erstellen/ Was sind Orgs?
+### Deploy a data source
 
-## Entwicklerworkflow
+WIP
 
-1. Dashboard.Jsonnet schreiben
-2. Code commiten & pushen
-3. Checkout aus Repository
-4. Kompilieren
-5. Testen
-6. Kompilat hochladen
-7. Kompilat deplyoen
 
+
+
+# Installtion Guide
+
+I recommend chocolatey for installing the tools, but you can install them however you want.
+
+To install chocolatey visit https://chocolatey.org/install
+
+## Docker Desktop, jq and Golang
+Here are the commands in chocolatey to download the required tools
+
+      choco install jq
+      choco install docker-desktop
+      choco install golang
+
+## Grafana installation
+
+Execute
+```shell
+docker-compose up -d
+```
+This will create a Grafana image and start a Grafana container with persistent storage.
+
+## Jsonnet
+Execute
+
+```shell
+go get github.com/google/go-jsonnet/cmd/jsonnet
+```
+
+Choose an installation directory and execute
+```shell
+git clone https://github.com/google/go-jsonnet.git
+cd go-jsonnet
+go build ./cmd/jsonnet
+go build ./cmd/jsonnetfmt
+go build ./cmd/jsonnet-deps
+```
+
+## Grafonnet
+
+Choose a folder for the Grafonnet Library and clone the repository.
+
+```shell
+git clone https://github.com/grafana/grafonnet-lib.git
+```
 
