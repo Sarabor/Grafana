@@ -8,11 +8,12 @@ Everything you need to get started with Grafana in a professional environment.
 
 [Requirements](#requirements)
 
+[Installation Guide](#Installation-guide)
+
 [Quick Start](#quick-start)
 
 [Advanced usage](#advanced-usage)
 
-[Installation Guide](#Installation-guide)
 
 
 ## Requirements
@@ -29,6 +30,51 @@ Everything you need to get started with Grafana in a professional environment.
 - Jsonnet
 - Grafonnet
 - Any console that works for you. I used Git Bash
+
+## Installation Guide
+
+I recommend chocolatey for installing the tools, but you can install them however you want.
+
+To install chocolatey visit https://chocolatey.org/install
+
+### Docker Desktop, jq and Golang
+Here are the commands in chocolatey to download the required tools
+
+      choco install jq
+      choco install docker-desktop
+      choco install golang
+
+### Grafana installation
+
+Execute
+```shell
+docker-compose up -d
+```
+This will create a Grafana image and start a Grafana container with persistent storage.
+
+### Jsonnet
+Execute
+
+```shell
+go get github.com/google/go-jsonnet/cmd/jsonnet
+```
+
+Choose an installation directory and execute
+```shell
+git clone https://github.com/google/go-jsonnet.git
+cd go-jsonnet
+go build ./cmd/jsonnet
+go build ./cmd/jsonnetfmt
+go build ./cmd/jsonnet-deps
+```
+
+### Grafonnet
+
+Choose a folder for the Grafonnet Library and clone the repository.
+
+```shell
+git clone https://github.com/grafana/grafonnet-lib.git
+```
 
 
 ## Quick start
@@ -104,55 +150,12 @@ http://localhost:3000/api/dashboards/db
 ```
 Go to the dashboard overview in Grafana and refresh it. Your dashboard is now deployed.
 
-#### Deploy a data source
+### Deploy a data source
 
 WIP
 
 
 
 
-## Installation Guide
 
-I recommend chocolatey for installing the tools, but you can install them however you want.
-
-To install chocolatey visit https://chocolatey.org/install
-
-### Docker Desktop, jq and Golang
-Here are the commands in chocolatey to download the required tools
-
-      choco install jq
-      choco install docker-desktop
-      choco install golang
-
-### Grafana installation
-
-Execute
-```shell
-docker-compose up -d
-```
-This will create a Grafana image and start a Grafana container with persistent storage.
-
-### Jsonnet
-Execute
-
-```shell
-go get github.com/google/go-jsonnet/cmd/jsonnet
-```
-
-Choose an installation directory and execute
-```shell
-git clone https://github.com/google/go-jsonnet.git
-cd go-jsonnet
-go build ./cmd/jsonnet
-go build ./cmd/jsonnetfmt
-go build ./cmd/jsonnet-deps
-```
-
-### Grafonnet
-
-Choose a folder for the Grafonnet Library and clone the repository.
-
-```shell
-git clone https://github.com/grafana/grafonnet-lib.git
-```
 
