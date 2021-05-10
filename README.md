@@ -2,7 +2,7 @@
 
 # Grafana with Grafonnet
 
-Everything you need to get started with Grafana in a professional environment.
+Everything you need to get started with Grafonnet.
 
 ## Overview
 
