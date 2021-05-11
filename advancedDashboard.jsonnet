@@ -14,10 +14,9 @@ dashboard.new(
 
 .addTemplate(
     grafana.template.datasource(
-        name='TestData_DS',
+        name='DataSource',
         current='TestData DB',
         query='testdata',
-        hide='label',
     )
 )
 
@@ -25,7 +24,7 @@ dashboard.new(
     grafana.template.interval(
         name='Interval',
         current='5m',
-        query='auto, 5m, 10m, 20m',
+        query='auto, 5m, 10m, 20m, 60m',
     )
 )
 
@@ -36,11 +35,11 @@ dashboard.new(
         datasource='TestData DB',
         valueName='Average',
         ),
-        gridPos={
-            x:0,
-            y:0,
-            w:12,
-            h:5,
+    gridPos={
+        x:0,
+        y:0,
+        w:12,
+        h:5,
         }
 )
 
