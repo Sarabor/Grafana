@@ -5,14 +5,14 @@ local text = grafana.text;
 dashboard.new('HelloPanel!')
 
 .addPanel(
-  text.new(
-    'HelloWorld',
-	content='HelloWorld'
-  ),
-  gridPos={
-    x: 0,
-    y: 0,
-    w: 24,
-    h: 3,
-  }
+    text.new(
+        title='HelloWorld',
+	    content='HelloWorld'
+    ),
+    gridPos={
+        x: 0,
+        y: 0,
+        w: 12,
+        h: 5,
+    }
 )

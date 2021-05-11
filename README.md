@@ -92,22 +92,24 @@ local dashboard = grafana.dashboard;
 local text = grafana.text;
 
 dashboard.new('HelloPanel!')
-   .addPanel(
-      text.new(
-      'HelloWorld',
-      content='HelloWorld'
-      ), gridPos={
+
+.addPanel(
+    text.new(
+        title='HelloWorld',
+	    content='HelloWorld'
+    ),
+    gridPos={
         x: 0,
         y: 0,
-        w: 24,
-        h: 3,
-      }
-   )
+        w: 12,
+        h: 5,
+    }
+)
  ```
 
 Once you have your Jsonnet Code execute
 ```shell
-jsonnet -J grafonnet-lib dashboard.jsonnet 
+jsonnet -J grafonnet-lib helloDashboard.jsonnet 
 ```
 Grafonnet-lib must be exchanged for the path to the grafonnet-lib folder.
 You will get a dashboard JSON that is ready to be imported into Grafana.
@@ -140,7 +142,7 @@ To deploy a dashboard with the Grafana API execute
 
 ```shell
 JSONNET_PATH=$grafonnet \
-jsonnet dashboard.jsonnet > dashboard.json
+jsonnet helloDashboard.jsonnet > dashboard.json
 
 payload="{\"dashboard\": $(jq . dashboard.json), \"overwrite\": true}"
 curl -X POST --insecure -H "Authorization: Bearer <Token>" \
@@ -153,6 +155,8 @@ Go to the dashboard overview in Grafana and refresh it. Your dashboard is now de
 ### Deploy a data source
 
 WIP
+
+For full documentation visit: https://grafana.github.io/grafonnet-lib/api-docs/
 
 
 
