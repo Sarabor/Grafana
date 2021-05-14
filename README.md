@@ -66,8 +66,6 @@ Choose a folder for the Grafonnet Library and clone the repository: https://gith
 
 For best usage create a path variable to grafonnet-lib. I called mine "grafonnet".
 
-### Alternative Installation (If you have trouble with proxy)
-
 #### jq
 
 jq is to read json files. We will need that for our advanced usage.
