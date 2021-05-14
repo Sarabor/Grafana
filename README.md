@@ -40,7 +40,7 @@ I use go-jsonnet, so first download and install go https://golang.org/dl/
 
 Once you have go, you can download jsonnet.
 
-1. In Git Bash execute
+Execute
 ```
 go get github.com/google/go-jsonnet/cmd/jsonnet
 ```
@@ -58,6 +58,8 @@ go build ./cmd/jsonnet
 go build ./cmd/jsonnetfmt
 go build ./cmd/jsonnet-deps
 ```
+You can now use the jsonnet command.
+
 ### Grafonnet
 
 Choose a folder for the Grafonnet Library and clone the repository: https://github.com/grafana/grafonnet-lib.git
