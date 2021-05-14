@@ -35,7 +35,7 @@ Everything you need to get started with Grafonnet.
 
 I used git bash for all command lines. So if you use another command line tool the commands may differ.
 
-#### Jsonnet
+### Jsonnet
 I use go-jsonnet, so first download and install go https://golang.org/dl/
 
 Once you have go, you can download jsonnet.
@@ -66,7 +66,7 @@ Choose a folder for the Grafonnet Library and clone the repository: https://gith
 
 For best usage create a path variable to grafonnet-lib. I called mine "grafonnet".
 
-#### jq
+### jq
 
 jq is to read json files. We will need that for our advanced usage.
 
@@ -78,7 +78,7 @@ jq is to read json files. We will need that for our advanced usage.
 6. You can now use the jq command in your command line tool
 
 
-#### Grafana installation
+### Grafana installation
 Execute the docker-compose to create a Grafana container with persistent storage.
 ```shell
 docker-compose up -d
