@@ -33,53 +33,69 @@ Everything you need to get started with Grafonnet.
 
 ## Installation Guide
 
-I recommend chocolatey for installing the tools, but you can install them however you want.
+I used git bash for all command lines. So if you use another command line tool the commands may differ.
 
-To install chocolatey visit https://chocolatey.org/install
+#### Jsonnet
+I use go-jsonnet, so first download and install go https://golang.org/dl/
 
-### Docker Desktop, jq and Golang
-Here are the commands in chocolatey to download the required tools
+Once you have go, you can download jsonnet.
 
-      choco install jq
-      choco install docker-desktop
-      choco install golang
-
-### Grafana installation
-
-Execute
-```shell
-docker-compose up -d
+1. In Git Bash execute
 ```
-This will create a Grafana image and start a Grafana container with persistent storage.
-
-### Jsonnet
-Execute
-
-```shell
 go get github.com/google/go-jsonnet/cmd/jsonnet
 ```
+If you have a proxy use:
+```
+HTTPS_PROXY=<proxy>:<port> go get github.com/google/go-jsonnet/cmd/jsonnet
+```
 
-Choose an installation directory and execute
-```shell
+
+Choose an installation folder and execute
+```
 git clone https://github.com/google/go-jsonnet.git
 cd go-jsonnet
 go build ./cmd/jsonnet
 go build ./cmd/jsonnetfmt
 go build ./cmd/jsonnet-deps
 ```
-
 ### Grafonnet
 
-Choose a folder for the Grafonnet Library and clone the repository.
+Choose a folder for the Grafonnet Library and clone the repository: https://github.com/grafana/grafonnet-lib.git
 
+For best usage create a path variable to grafonnet-lib. I called mine "grafonnet".
+
+### Alternative Installation (If you have trouble with proxy)
+
+#### jq
+
+jq is to read json files. We will need that for our advanced usage.
+
+1. Download jq here: https://stedolan.github.io/jq/download/
+2. Choose a folder and put the jq-win64.exe there
+3. Rename jq-win64.exe to jq.exe
+4. Copy the path to the folder where you put jq.exe
+5. Add the path to the folder to the path system variable
+6. You can now use the jq command in your command line tool
+
+
+#### Grafana installation
+Execute the docker-compose to create a Grafana container with persistent storage.
 ```shell
-git clone https://github.com/grafana/grafonnet-lib.git
+docker-compose up -d
 ```
 
+### With chocolatey
+
+If you have chocolatey you can install jq and go using:
+```
+choco install golang
+choco install jq
+```
 
 ## Quick start
 
 When you only want to use or test grafonnet without any additional tools or utility.
+I recommend trying this out first to verify your jsonnet and grafonnet installation.
 
 
 ### HelloDashboard!
@@ -109,9 +125,8 @@ dashboard.new('HelloPanel!')
 
 Once you have your Jsonnet Code execute
 ```shell
-jsonnet -J grafonnet-lib helloDashboard.jsonnet 
+jsonnet -J $grafonnet-lib helloDashboard.jsonnet 
 ```
-Grafonnet-lib must be exchanged for the path to the grafonnet-lib folder.
 You will get a dashboard JSON that is ready to be imported into Grafana.
 
 ## Advanced Usage
@@ -119,12 +134,6 @@ You will get a dashboard JSON that is ready to be imported into Grafana.
 This is when you want to get a smoother development experience and make use of the Grafana API. 
 
 ### Initial Configuration
-
-To use the Grafonnet library effectively, I recommend some configuration. 
-
-#### Path to Grafonnet
-
-Set a environment variable with the path to your Grafonnet Library and call it 'grafonnet'.
 
 #### Authorization Token
 
