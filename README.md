@@ -122,7 +122,7 @@ dashboard.new('HelloPanel!')
 
 Once you have your Jsonnet Code execute
 ```shell
-jsonnet -J $grafonnet-lib helloDashboard.jsonnet 
+jsonnet -J $grafonnet helloDashboard.jsonnet 
 ```
 You will get a dashboard JSON that is ready to be imported into Grafana.
 
