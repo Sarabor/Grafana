@@ -5,10 +5,12 @@ services:
     image: grafana/grafana:latest
     restart: always
     ports:
-      - "3000:3000"
-
+      - "4000:3000"
+    #environment:                                        #uncomment if you want to change env variables
+      #- HTTPS_PROXY=wwwproxygaia.dillinger.de:3128/     #uncomment if you have a proxy
+      #- GF_INSTALL_PLUGINS=grafana-piechart-panel       #uncomment if you want to install plugins
     volumes:
-     - grafana-storage:/var/lib/grafana
+      - grafana-storage:/var/lib/grafana
 #    Für Provisioning
 #      - type: bind
 #        source: ./provisioning
