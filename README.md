@@ -14,6 +14,8 @@ Everything you need to get started with Grafonnet.
 
 [Advanced usage](#advanced-usage)
 
+[Trouble Shooting](#trouble-shooting)
+
 
 
 ## Requirements
@@ -64,7 +66,7 @@ You can now use the jsonnet command.
 
 Choose a folder for the Grafonnet Library and clone the repository: https://github.com/grafana/grafonnet-lib.git
 
-For best usage create a path variable to grafonnet-lib. I called mine "grafonnet".
+For best usage create a user variable to grafonnet-lib. I called mine "grafonnet".
 
 ### jq
 
@@ -142,6 +144,8 @@ curl -X POST -H "Content-Type: application/json" -d '{"name":"<Tokenname>", "rol
 ```
 Insert a name for the token in \<Tokenname\>. You will get a token. Save it somewhere, because you will not be able to access it again.
 
+For easy access to your token set a user variable. I called mine AUTH.
+
 ### Deploying a dashboard
 
 To deploy a dashboard with the Grafana API execute
@@ -151,7 +155,7 @@ JSONNET_PATH=$grafonnet \
 jsonnet helloDashboard.jsonnet > dashboard.json
 
 payload="{\"dashboard\": $(jq . dashboard.json), \"overwrite\": true}"
-curl -X POST --insecure -H "Authorization: Bearer <Token>" \
+curl -X POST --insecure -H "Authorization: Bearer $AUTH" \
 -H "Content-Type: application/json" \
 -d "${payload}" \
 http://localhost:3000/api/dashboards/db
