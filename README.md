@@ -164,8 +164,23 @@ WIP
 
 For full documentation visit: https://grafana.github.io/grafonnet-lib/api-docs/
 
+## Troubleshooting
 
+### The curl commands don't give any response
 
+Try changing the port of the docker container. In the docker-compose yaml in the repository
 
+```yaml
+version: '3'
+
+services:
+  grafana:
+    image: grafana/grafana:latest
+    restart: always
+    ports:
+      - "<CHANGEPORTHERE>:3000"
+
+```
+Change the port until you get the desired respone.
 
 
