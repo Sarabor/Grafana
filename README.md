@@ -35,7 +35,7 @@ Everything you need to get started with Grafonnet.
 
 ## Installation Guide
 
-First clone this repository. 
+First clone this repository. You will need the files for later steps.
 I used git bash for all command lines. So if you use another command line tool the commands may differ.
 
 ### Jsonnet
@@ -123,7 +123,7 @@ dashboard.new('HelloPanel!')
 )
  ```
 
-Once you have your Jsonnet Code execute
+Once you have your Jsonnet Code execute in this repository
 ```shell
 jsonnet -J $grafonnet helloDashboard.jsonnet 
 ```
@@ -149,7 +149,7 @@ For easy access to your token set a user variable. I called mine AUTH.
 
 ### Deploying a dashboard
 
-To deploy a dashboard with the Grafana API execute
+To deploy a dashboard with the Grafana API execute in this repository
 
 ```shell
 JSONNET_PATH=$grafonnet \
