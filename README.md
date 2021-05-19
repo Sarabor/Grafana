@@ -185,6 +185,7 @@ services:
       - "<CHANGEPORTHERE>:3000"
 
 ```
-Change the port until you get the desired respone.
+Change the port until you get the desired respone. Don't forget to change the URL in the curl commands too.
+For example, if you use port 4000, your URL is http://localhost:4000/[...]
 
 
