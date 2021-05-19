@@ -14,7 +14,7 @@ Everything you need to get started with Grafonnet.
 
 [Advanced usage](#advanced-usage)
 
-[Trouble Shooting](#trouble-shooting)
+[Troubleshooting](#troubleshooting)
 
 
 
