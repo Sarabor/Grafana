@@ -172,7 +172,7 @@ For full documentation visit: https://grafana.github.io/grafonnet-lib/api-docs/
 
 ### The curl commands don't give any response
 
-Try changing the port of the docker container. In the docker-compose yaml in the repository
+Try changing the port of the docker container. In the docker-compose yaml in the repository. Delete the old container and start the new one.
 
 ```yaml
 version: '3'
