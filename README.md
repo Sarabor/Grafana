@@ -35,6 +35,7 @@ Everything you need to get started with Grafonnet.
 
 ## Installation Guide
 
+First clone this repository. 
 I used git bash for all command lines. So if you use another command line tool the commands may differ.
 
 ### Jsonnet
@@ -81,7 +82,7 @@ jq is to read json files. We will need that for our advanced usage.
 
 
 ### Grafana installation
-Execute the docker-compose to create a Grafana container with persistent storage.
+Execute the docker-compose in this repository to create a Grafana container with persistent storage.
 ```shell
 docker-compose up -d
 ```
