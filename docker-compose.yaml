@@ -27,7 +27,7 @@ services:
       POSTGRES_DB: test_data
       #PGDATA: /tmp
     volumes:
-      - ./docker-entrypoint-initdb.d/:/docker-entrypoint-initdb.d
-      - ./data/:/tmp/data      
+      - ./postgres-test-datenbank/docker-entrypoint-initdb.d/:/docker-entrypoint-initdb.d
+      - ./postgres-test-datenbank/data/:/tmp/data      
 volumes:
   grafana-storage:
