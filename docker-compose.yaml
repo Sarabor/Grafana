@@ -15,8 +15,8 @@ services:
 #      - type: bind
 #        source: ./provisioning
 #        target: /etc/grafana/provisioning
-  postgres_test_db:
-    container_name: testdb
+  postgres_db:
+    container_name: postgres
     image: postgres:12.1
     restart: always
     ports:
