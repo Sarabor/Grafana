@@ -123,13 +123,7 @@ jsonnet -J $grafonnet helloDashboard.jsonnet
 ```
 You will get a dashboard JSON that is ready to be imported into Grafana.
 
-
-
-### Deploy a data source
-
-WIP
-
-For full documentation visit: https://grafana.github.io/grafonnet-lib/api-docs/
+For advanced usage look into the folder advancedUsage.
 
 
 
