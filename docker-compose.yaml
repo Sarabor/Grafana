@@ -5,7 +5,7 @@ services:
     image: grafana/grafana:latest
     restart: always
     ports:
-      - "3000:3000"
+      - "4000:3000"
     #environment:                                        #uncomment if you want to change env variables
       #- HTTPS_PROXY=<proxy>:<port>/                   #uncomment if you have a proxy
       #- GF_INSTALL_PLUGINS=grafana-piechart-panel     #uncomment if you want to install plugins

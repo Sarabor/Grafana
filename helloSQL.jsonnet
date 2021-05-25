@@ -21,6 +21,14 @@ dashboard.new(
                 boden_t AS "Temperatur",
                 lage_q AS "Lage",
                 position_q AS "Position",
+                position_q AS "Position1",
+                position_q AS "Position2",
+                position_q AS "Position3",
+                position_q AS "Position4",
+                position_q AS "Position5",
+                position_q AS "Position6",
+                position_q AS "Position7",
+                position_q AS "Position8",
                 schnitt_q AS "Schnitt"
             FROM h5_boden
             ORDER BY 1',
