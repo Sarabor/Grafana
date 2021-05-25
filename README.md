@@ -118,8 +118,8 @@ dashboard.new('HelloPanel!')
         title='HelloWorld',
         content='HelloWorld'
         ),
-        gridPos={			    #the second parameter is optional. It sets the position and the dimensions of the panel
-		} 
+        gridPos={}			    #the second parameter is optional. It sets the position and the dimensions of the panel
+
 )
  ```
 
