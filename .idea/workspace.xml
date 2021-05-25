@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d8a48e21-0675-4fa3-827e-1248129a5256" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helloSQL.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/helloSQL.jsonnet" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres-test-datenbank" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugins/docker-compose.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/helloSQL.jsonnet" beforeDir="false" afterPath="$PROJECT_DIR$/sql/helloSQL.jsonnet" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
