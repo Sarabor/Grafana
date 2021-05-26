@@ -6,11 +6,10 @@ This example shows Grafonnet code with a simple SQL query.
 local grafana = import 'grafonnet/grafana.libsonnet';
 local dashboard = grafana.dashboard;
 local table = grafana.tablePanel;	#import the tools you want to use				
-local sql = grafana.sql;
+local sql = grafana.sql;		#import sql utility
 
 dashboard.new(
     title = 'SQL_Dashboard',
-    style = 'light',
 )
 
 
