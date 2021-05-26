@@ -1,6 +1,6 @@
 ## SQL
 
-This example shows Grafonnet code with a simple SQL query. 
+This example shows Grafonnet code with a simple SQL query. To write your own Grafana dashboard which uses a SQL query, you first need to connect Grafana to a datasource that accepts SQL queries. Then you can write normal SQL between the _''_, after the _sql.target_. Note that you need a column named "time". Grafana automatically searches a column named "time" when creating the dashboard. 
 
 ```jsonnet
 local grafana = import 'grafonnet/grafana.libsonnet';
