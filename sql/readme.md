@@ -34,4 +34,3 @@ dashboard.new(
 		} 
 )   
 ```
-test
