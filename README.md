@@ -10,27 +10,23 @@ Everything you need to get started with Grafonnet.
 
 [Installation Guide](#Installation-guide)
 
-[Quick Start](#quick-start)
-
-[Advanced usage](#advanced-usage)
+[HelloWorld](#helloworld)
 
 [Troubleshooting](#troubleshooting)
 
 
 
-## Requirements
+## Prerequisites
 
-### For Quickstart
+### For HelloWorld
 - Jsonnet
 - Grafonnet
-- Any console that works for you. I used Git Bash
-
-
+- Git Bash (Other consoles work too, but the commands my differ)
+- Running Grafana Container
 
 ## Installation Guide
 
 First clone this repository. You will need the files for later steps.
-I used git bash for all command lines. So if you use another command line tool the commands may differ.
 
 ### Jsonnet
 I use go-jsonnet, so first download and install go https://golang.org/dl/
@@ -65,13 +61,13 @@ For best usage create a user variable to grafonnet-lib. I called mine "grafonnet
 
 ### jq
 
-jq is to read json files. We will need that for our advanced usage.
+jq is to read JSON files. We need jq to deploy dashboards with the Grafana API in another tutorial.
 
 1. Download jq here: https://stedolan.github.io/jq/download/
 2. Choose a folder and put the jq-win64.exe there
 3. Rename jq-win64.exe to jq.exe
-4. Copy the path to the folder where you put jq.exe
-5. Add the path to the folder to the path system variable
+4. Copy the directory path of jq.exe
+5. Add the directory path to the PATH variable
 6. You can now use the jq command in your command line tool
 
 
@@ -89,13 +85,13 @@ choco install golang
 choco install jq
 ```
 
-## Quick start
+## HelloWorld
 
-Use the Quick start to validate the installation of the tools and get a first look at Grafonnet.
+Use the HelloWorld to validate the installation of the tools and get a first look at Grafonnet.
 
 ### HelloDashboard!
 
-This is a minimal dashboard with a single text panel written in Jsonnet that will generate the equivalent dashboard in JSON.
+This is a minimal dashboard with a single text panel written with the Grafonnet library that will generate the equivalent dashboard in JSON.
 
 ```jsonnet
 local grafana = import 'grafonnet/grafana.libsonnet';
@@ -114,16 +110,19 @@ dashboard.new('HelloPanel!')
 
 )
  ```
+To convert the Grafonnet Code into JSON execute the following command in Git Bash in the same directoy as your jsonnet file.
 
-Once you have your Jsonnet Code execute in this repository
 ```shell
 jsonnet -J $grafonnet helloDashboard.jsonnet 
 ```
 You will get a dashboard JSON that is ready to be imported into Grafana.
 
-If you are new to Grafana or need to refresh your basic knowledge, I recommend working through the official [Grafana Tutorials](.
+If you are new to Grafana or need to refresh your basic knowledge, I recommend working through the official [Grafana Tutorials](https://grafana.com/tutorials/grafana-fundamentals/).
 
-For advanced usage look into the folder advancedUsage.
+## Troubleshooting
+
+If you have any troubles you might find your problem in [Troubleshooting].
+
 
 
 
