@@ -9,7 +9,7 @@ local table = grafana.tablePanel;	#import the tools you want to use
 local sql = grafana.sql;
 
 dashboard.new(
-    title = 'Hochofen',
+    title = 'SQL_Dashboard',
     style = 'light',
 )
 
@@ -17,7 +17,7 @@ dashboard.new(
 
 .addPanel(				#addPanel adds a row in which you can put panels via the parameters						
     table.new(				#the first paramater is the panel type eg. text, graph, table
-        title='Bodentemperatur',
+        title='Tabelle',
     )
     .addTarget(                         #add a target for the table
         sql.target(                     #declare the target to be a sql query, insert sql query between ' '
