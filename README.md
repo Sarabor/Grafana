@@ -2,7 +2,7 @@
 
 # Grafana with Grafonnet
 
-Everything you need to get started with Grafonnet.
+Everything you need to get started with Grafonnet. 
 
 ## Overview
 
@@ -91,9 +91,7 @@ choco install jq
 
 ## Quick start
 
-When you only want to use or test grafonnet without any additional tools or utility.
-I recommend trying this out first to verify your jsonnet and grafonnet installation.
-
+Use the Quick start to validate the installation of the tools and get a first look at Grafonnet.
 
 ### HelloDashboard!
 
@@ -122,6 +120,8 @@ Once you have your Jsonnet Code execute in this repository
 jsonnet -J $grafonnet helloDashboard.jsonnet 
 ```
 You will get a dashboard JSON that is ready to be imported into Grafana.
+
+If you are new to Grafana or need to refresh your basic knowledge, I recommend working through the official [Grafana Tutorials](.
 
 For advanced usage look into the folder advancedUsage.
 
