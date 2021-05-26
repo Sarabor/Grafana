@@ -12,8 +12,6 @@ Everything you need to get started with Grafonnet.
 
 [Quick Start](#quick-start)
 
-[Advanced usage](#advanced-usage)
-
 [Troubleshooting](#troubleshooting)
 
 
