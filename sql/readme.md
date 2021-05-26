@@ -22,7 +22,8 @@ dashboard.new(
     .addTarget(                         #add a target for the table
         sql.target(                     #declare the target to be a sql query, insert sql query between ' '
            'SELECT                     
-                column
+                column AS "time",	#Grafana searches for a column named "time" and gives an error when it's not found
+		column 			#you need at least two columns for Grafana to show you the data
             FROM data',
         )
     ),     
