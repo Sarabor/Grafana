@@ -1,6 +1,6 @@
 ## SQL
 
-In this readme I will show you a sample programm to use sql queries.
+This example shows Grafonnet code with a simple SQL query. 
 
 ```jsonnet
 local grafana = import 'grafonnet/grafana.libsonnet';
