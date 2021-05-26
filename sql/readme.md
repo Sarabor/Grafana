@@ -23,7 +23,7 @@ dashboard.new(
         sql.target(                     #declare the target to be a sql query, insert sql query between ' '
            'SELECT                     
                 column
-            FROM data,
+            FROM data',
         )
     ),     
         gridPos={
