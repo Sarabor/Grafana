@@ -6,7 +6,7 @@ Everything you need to get started with Grafonnet.
 
 ## Overview
 
-[Requirements](#requirements)
+[Prerequisites](#prerequisites)
 
 [Installation Guide](#Installation-guide)
 
@@ -118,6 +118,8 @@ jsonnet -J $grafonnet helloDashboard.jsonnet
 You will get a dashboard JSON that is ready to be imported into Grafana.
 
 If you are new to Grafana or need to refresh your basic knowledge, I recommend working through the official [Grafana Tutorials](https://grafana.com/tutorials/grafana-fundamentals/).
+
+Next we learn to deploy a dashboard with the Grafana API.
 
 ## Troubleshooting
 
