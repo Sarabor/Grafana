@@ -120,11 +120,11 @@ You will get a dashboard JSON that is ready to be imported into Grafana.
 
 If you are new to Grafana or need to refresh your basic knowledge, I recommend working through the official [Grafana Tutorials](https://grafana.com/tutorials/grafana-fundamentals/).
 
-Next we learn to deploy a dashboard with the Grafana API.
+Next we learn to [deploy a dashboard with the Grafana API](https://github.com/Sarabor/Grafana/tree/main/deployment).
 
 ## Troubleshooting
 
-If you have any troubles you might find your problem in [Troubleshooting].
+If you have any troubles you might find your problem in [Troubleshooting](https://github.com/Sarabor/Grafana/tree/main/troubleshooting).
 
 
 
