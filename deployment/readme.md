@@ -55,6 +55,7 @@ If you are interested how the script works, this it what it looks like. Your jso
 this is why it's a parameter in the script.
 
 ```shell
+#!/bin/bash
 JSONNET_PATH=$grafonnet \
 jsonnet $1 > dashboard.json
 
@@ -63,6 +64,8 @@ curl -X POST --insecure -H "Authorization: Bearer $AUTH" \
 -H "Content-Type: application/json" \
 -d "${payload}" \
 http://localhost:3000/api/dashboards/db
+
+read -n1 -s -r -p $'\nPress any button to continue...\n' key
 ```
 
 Most of the code does not have to be changed when working in a different environment,but you can think of some parts of the code as parameters.
@@ -73,6 +76,12 @@ Most of the code does not have to be changed when working in a different environ
 
 So if some of the listed things differ in your environment, change them accordingly.
 
+The last line 
+```bash
+read -n1 -s -r -p $'\nPress any button to continue...\n' key
+```
+leaves the process open until you press a key. This is to make sure you have time to read the output if you start the console using the deploy.sh, because otherwise it would close itself immediately after executing the commands.
+If you are working with a linux console anyway and you do not want to press a button for the process to end, feel free to delete this line.
 
 
 You are now ready to programm with Grafonnet. To see some examples of advanced dashboards look into the folders of the repository.
