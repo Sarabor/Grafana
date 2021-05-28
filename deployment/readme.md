@@ -27,13 +27,36 @@ This returns a respone.
 _eyJrIjoidlVaem9QaDlldDVyd0hvNlZCVzBzZVM4VnJFdU00cnYiLCJuIjoiVG9rZW4iLCJpZCI6MX0=_ is our Authorizazion Token. Save it somewhere, because you will not be able to invoke it again.
 For easy access to your token create a user variable. I called mine AUTH.
 
+#### Bash script
+
+I recommend to save the deploy.sh to your path variable, like you have done with the jq.exe. When you have done this, you will be able to access the bash script from any directory.
+In the following step I will assume you have done this.
+
 ### Deploying a dashboard
 
-To deploy a dashboard with the Grafana API execute the command below in the directory where your dashboard is.
+Now navigate into this directory and execute:
+
+```shell
+deploy.sh helloDeployment.jsonnet
+```
+
+To verify that you can use deploy.sh from anywhere, try to deploy the helloDashboard.jsonnet from the parent directory.
+
+**Also at this point you can use your console of choice. Executing the helloBash script will open a console capable of running the script by itself. Try using cmd or powershell to see how it works!**
+
+Note: I assume you use the Port 3000 for Grafana, if not change it in the helloBash.sh. Below you will find a description of the script, so you know how to do it.
+
+Go to the dashboard overview in Grafana and refresh it. Your dashboard is now deployed.
+
+
+### The script
+
+If you are interested how the script works, this it what it looks like. Your jsonnet file is the only part of the script that has to change regularly,
+this is why it's a parameter in the script.
 
 ```shell
 JSONNET_PATH=$grafonnet \
-jsonnet helloDashboard.jsonnet > dashboard.json
+jsonnet $1 > dashboard.json
 
 payload="{\"dashboard\": $(jq . dashboard.json), \"overwrite\": true}"
 curl -X POST --insecure -H "Authorization: Bearer $AUTH" \
@@ -41,17 +64,16 @@ curl -X POST --insecure -H "Authorization: Bearer $AUTH" \
 -d "${payload}" \
 http://localhost:3000/api/dashboards/db
 ```
-Go to the dashboard overview in Grafana and refresh it. Your dashboard is now deployed.
-
-### Additional Notes 
 
 Most of the code does not have to be changed when working in a different environment,but you can think of some parts of the code as parameters.
-- **helloDashboard.jsonnet** is the dashboard you want to deploy.
+- **$1** is the dashboard you want to deploy.
 - The JSON will be saved to a file **dashboard.json**. The file will be created in your current directory.
 - **$AUTH** is the variable for our Authorization Token.
-- **ht<span>tp://</span>://localhost:3000/api/dashboards/db** is the URL to our Grafana API. 
+- **ht<span>tp://</span>://localhost:3000/api/dashboards/db** is the URL to our Grafana API.
 
 So if some of the listed things differ in your environment, change them accordingly.
+
+
 
 You are now ready to programm with Grafonnet. To see some examples of advanced dashboards look into the folders of the repository.
 
