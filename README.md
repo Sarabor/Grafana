@@ -122,6 +122,8 @@ If you are new to Grafana or need to refresh your basic knowledge, I recommend w
 
 Next we learn to [deploy a dashboard with the Grafana API](https://github.com/Sarabor/Grafana/tree/main/deployment).
 
+For full documentation of Grafonnet visist [Grafonnet API Docs](https://grafana.github.io/grafonnet-lib/api-docs/)
+
 ## Troubleshooting
 
 If you have any troubles you might find your problem in [Troubleshooting](https://github.com/Sarabor/Grafana/tree/main/troubleshooting).
