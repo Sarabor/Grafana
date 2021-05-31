@@ -14,20 +14,6 @@ services:
 #    Für Provisioning
 #      - type: bind
 #        source: ./provisioning
-#        target: /etc/grafana/provisioning
-  postgres_db:
-    container_name: postgres
-    image: postgres:12.1
-    restart: always
-    ports:
-      - 5432:5432
-    environment:
-      POSTGRES_USER: dev
-      POSTGRES_PASSWORD: dev
-      POSTGRES_DB: test_data
-      #PGDATA: /tmp
-    volumes:
-      - ./postgres-test-datenbank/docker-entrypoint-initdb.d/:/docker-entrypoint-initdb.d
-      - ./postgres-test-datenbank/data/:/tmp/data      
+#        target: /etc/grafana/provisioning      
 volumes:
   grafana-storage:
