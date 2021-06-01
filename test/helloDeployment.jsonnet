@@ -10,6 +10,6 @@ dashboard.new('HelloDeployment!')
         title='HelloDeployment',
         content='I am deployed'
         ),
-        gridPos={			#the second parameter is optional. It sets the position and the dimensions of the panel
-		} 
+        gridPos={}			#the second parameter is optional. It sets the position and the dimensions of the panel
+
 )

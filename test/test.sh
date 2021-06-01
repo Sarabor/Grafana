@@ -7,11 +7,6 @@ if [[ -z "${DASHBOARD}" ]]; then
         read -n1 -s -r -p $'\nPress any button to continue...\n' key
         exit 1
 fi
-if [[ -z "${GRAFANA:-}" ]]; then
-        echo 'Must provide GRAFANA'
-        read -n1 -s -r -p $'\nPress any button to continue...\n' key
-        exit 1
-fi
 
 dbjson=$(mktemp)
 jsonnet -J ""${grafonnet}"" -J . "${DASHBOARD}" > "${dbjson}"

@@ -1,53 +1,39 @@
-## Deployment Tutorial
+## Test Dashboard Tutorial
 
-In this tutorial we will create an authorization token to access the Grafana API and deploy a dashboard.
+In this tutorial we will learn a method to look at your dashboard without deploying them. This is useful to test or share dashboards before deploying.
+To do this we make use of the Snapshot API.
 
 ### Prerequisites
-- Docker
 - Running Grafana Container
 - jq
 - Jsonnet
 - Grafonnet
 - Git Bash (Other consoles work too, but the commands may differ)
+- Grafana Authorization Token Docker
+
 
 ### Initial Configuration
 
-#### Authorization Token
-
-Create or request an Authorization Token to use the Grafana API to import dashboards.
-This step is necessary to use the Grafana API.
-To get create a token insert a name for the token in \<Tokenname\> and execute in Git Bash:
-```shell
-curl -X POST -H "Content-Type: application/json" -d '{"name":"<Tokenname>", "role": "Admin"}' http://admin:admin@localhost:3000/api/auth/keys
-```
-This returns a respone.
-```shell
-{"id":3,"name":"Token","key":"eyJrIjoidlVaem9QaDlldDVyd0hvNlZCVzBzZVM4VnJFdU00cnYiLCJuIjoiVG9rZW4iLCJpZCI6MX0="}
-```
-_eyJrIjoidlVaem9QaDlldDVyd0hvNlZCVzBzZVM4VnJFdU00cnYiLCJuIjoiVG9rZW4iLCJpZCI6MX0=_ is our Authorizazion Token. Save it somewhere, because you will not be able to invoke it again.
-For easy access to your token create a user variable. I called mine AUTH.
-
 #### Bash script
 
-I recommend to save the deploy.sh to your path variable, like you have done with the jq.exe. When you have done this, you will be able to access the bash script from any directory.
+I recommend to save the test.sh to your path variable, like you have done with the jq.exe. When you have done this, you will be able to access the bash script from any directory.
 In the following step I will assume you have done this.
 
-### Deploying a dashboard
+### Testing a dashboard
 
 Now navigate into this directory and execute:
 
 ```shell
-deploy.sh helloDeployment.jsonnet
+deploy.sh helloTest.jsonnet
 ```
+
+A browser will open and display your dashboard.
 
 To verify that you can use deploy.sh from anywhere, try to deploy the helloDashboard.jsonnet from the parent directory.
 
-**Also at this point you can use your console of choice. Executing the helloBash script will open a console capable of running the script by itself. Try using cmd or powershell to see how it works!**
+**Also at this point you can use your console of choice. Executing the bash script will open a console capable of running the script by itself. Try using cmd or powershell to see how it works!**
 
-Note: I assume you use the Port 3000 for Grafana, if not change it in the helloBash.sh. Below you will find a description of the script, so you know how to do it.
-
-Go to the dashboard overview in Grafana and refresh it. Your dashboard is now deployed.
-
+To learn more about Snapshots and how they work visit [Grafana Snapshot](https://grafana.com/docs/grafana/latest/sharing/share-dashboard/#publish-a-snapshot).
 
 ### The script
 
@@ -56,14 +42,28 @@ this is why it's a parameter in the script.
 
 ```shell
 #!/bin/bash
-JSONNET_PATH=$grafonnet \
-jsonnet $1 > dashboard.json
 
-payload="{\"dashboard\": $(jq . dashboard.json), \"overwrite\": true}"
-curl -X POST --insecure -H "Authorization: Bearer $AUTH" \
--H "Content-Type: application/json" \
--d "${payload}" \
-http://localhost:3000/api/dashboards/db
+: "${DASHBOARD:=${1:-}}"
+: "${GRAFANA:=${2:-}}"
+if [[ -z "${DASHBOARD}" ]]; then
+        echo 'Must provide DASHBOARD'
+        read -n1 -s -r -p $'\nPress any button to continue...\n' key
+        exit 1
+fi
+
+dbjson=$(mktemp)
+jsonnet -J ""${grafonnet}"" -J . "${DASHBOARD}" > "${dbjson}"
+
+json=$(mktemp)
+jq "{ \"dashboard\": ., \"expires\": 300 }" < "${dbjson}" > "${json}"
+
+resp=$(curl -X POST --insecure -H "Authorization: Bearer "${AUTH}"" \
+-H 'Content-type: application/json' -H 'Accept: application/json' \
+"http://localhost:"${GRAFANA}"/api/snapshots" --data-binary "@${json}")
+
+ url=$(echo "${resp}" | jq -r ".url | sub(\"http://localhost:3000\"; \"http://localhost:"${GRAFANA}"\")")
+
+start "${url}"
 
 read -n1 -s -r -p $'\nPress any button to continue...\n' key
 ```
