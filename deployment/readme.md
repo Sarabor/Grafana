@@ -84,5 +84,5 @@ leaves the process open until you press a key. This is to make sure you have tim
 If you are working with a linux console anyway and you do not want to press a button for the process to end, feel free to delete this line.
 
 
-You are now ready to programm with Grafonnet. To see some examples of advanced dashboards look into the folders of the repository.
+Checkout the next [Tutorial](https://github.com/Sarabor/Grafana/edit/main/deployment/readme.md) to learn how to test your dashboards without deploying them.
 
