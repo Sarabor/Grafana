@@ -8,7 +8,7 @@ In this tutorial we will create an authorization token to access the Grafana API
 - jq
 - Jsonnet
 - Grafonnet
-- Git Bash (Other consoles work too, but the commands may differ)
+- Git Bash 
 
 ### Initial Configuration
 
