@@ -10,15 +10,13 @@ fi
 JSONNET_PATH=$grafonnet \
 jsonnet "${DASHBOARD}" > dashboard.json
 
-
-
 resp=$(mktemp)
 
 payload="{\"dashboard\": $(jq . dashboard.json), \"overwrite\": true}"
 resp=$(curl -X POST --insecure -H "Authorization: Bearer $AUTH" \
 -H "Content-Type: application/json" \
 -d "${payload}" \
-http://localhost:4000/api/dashboards/db)
+"http://localhost:"${GRAFANA}"/api/dashboards/db")
 
 
 if [[ $resp = *success* ]]
