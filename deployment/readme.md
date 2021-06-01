@@ -32,6 +32,10 @@ For easy access to your token create a user variable. I called mine AUTH.
 I recommend to save the deploy.sh to your path variable, like you have done with the jq.exe. When you have done this, you will be able to access the bash script from any directory.
 In the following step I will assume you have done this.
 
+#### Grafana Port Variable
+
+The default Grafana port on docker is 3000. However it may differ, that's why I recommend creating a user environment variable, so you don't have to change the script, when you change your port. Create a user environment variable with the name GRAFANA and with the value <yourport>.
+
 ### Deploying a dashboard
 
 Now navigate into this directory and execute:
@@ -56,23 +60,43 @@ this is why it's a parameter in the script.
 
 ```shell
 #!/bin/bash
-JSONNET_PATH=$grafonnet \
-jsonnet $1 > dashboard.json
+
+: "${DASHBOARD:=${1:-}}"
+if [[ -z "${DASHBOARD}" ]]; then
+        echo 'Must provide DASHBOARD'
+        read -n1 -s -r -p $'\nPress any button to continue...\n' key
+        exit 1
+fi
+
+JSONNET_PATH="${grafonnet}" \
+jsonnet "${DASHBOARD}" > dashboard.json
+
+resp=$(mktemp)
 
 payload="{\"dashboard\": $(jq . dashboard.json), \"overwrite\": true}"
-curl -X POST --insecure -H "Authorization: Bearer $AUTH" \
+resp=$(curl -X POST --insecure -H "Authorization: Bearer "${AUTH}"" \
 -H "Content-Type: application/json" \
 -d "${payload}" \
-http://localhost:3000/api/dashboards/db
+"http://localhost:"${GRAFANA}"/api/dashboards/db")
+
+
+if [[ $resp = *success* ]]
+then
+    echo $'\n''Dashboard successfully deployed!'
+else
+    echo $'\n''Something went wrong. Full Message:'
+    echo $'\n'$resp
+fi
+
 
 read -n1 -s -r -p $'\nPress any button to continue...\n' key
 ```
 
 Most of the code does not have to be changed when working in a different environment,but you can think of some parts of the code as parameters.
-- **$1** is the dashboard you want to deploy.
+- **${DASHBOARD}** is the dashboard you want to deploy.
 - The JSON will be saved to a file **dashboard.json**. The file will be created in your current directory.
 - **$AUTH** is the variable for our Authorization Token.
-- **ht<span>tp://</span>://localhost:3000/api/dashboards/db** is the URL to our Grafana API.
+- **${GRAFANA}** is the Port of of our Grafana Grafana URL.
 
 So if some of the listed things differ in your environment, change them accordingly.
 
