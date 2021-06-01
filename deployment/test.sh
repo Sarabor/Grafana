@@ -14,16 +14,16 @@ if [[ -z "${GRAFANA:-}" ]]; then
 fi
 
 dbjson=$(mktemp)
-jsonnet -J $grafonnet -J . "${DASHBOARD}" > "${dbjson}"
+jsonnet -J ""${grafonnet}"" -J . "${DASHBOARD}" > "${dbjson}"
 
 json=$(mktemp)
 jq "{ \"dashboard\": ., \"expires\": 300 }" < "${dbjson}" > "${json}"
 
-resp=$(curl -X POST --insecure -H "Authorization: Bearer ${AUTH}" \
+resp=$(curl -X POST --insecure -H "Authorization: Bearer "${AUTH}"" \
 -H 'Content-type: application/json' -H 'Accept: application/json' \
-"http://localhost:${GRAFANA}/api/snapshots" --data-binary "@${json}")
+"http://localhost:"${GRAFANA}"/api/snapshots" --data-binary "@${json}")
 
- url=$(echo "${resp}" | jq -r ".url | sub(\"http://localhost:3000\"; \"http://localhost:${GRAFANA}\")")
+ url=$(echo "${resp}" | jq -r ".url | sub(\"http://localhost:3000\"; \"http://localhost:"${GRAFANA}"\")")
 
 start "${url}"
 
