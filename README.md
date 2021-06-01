@@ -114,7 +114,7 @@ dashboard.new('HelloPanel!')
 To convert the Grafonnet Code into JSON execute the following command in Git Bash in the same directoy as your jsonnet file.
 
 ```shell
-jsonnet -J $grafonnet helloDeployment.jsonnet 
+jsonnet -J $grafonnet helloTest.jsonnet 
 ```
 You will get a dashboard JSON that is ready to be imported into Grafana.
 
