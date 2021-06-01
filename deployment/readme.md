@@ -84,5 +84,5 @@ leaves the process open until you press a key. This is to make sure you have tim
 If you are working with a linux console anyway and you do not want to press a button for the process to end, feel free to delete this line.
 
 
-Checkout the next [Tutorial](https://github.com/Sarabor/Grafana/edit/main/deployment/readme.md) to learn how to test your dashboards without deploying them.
+Checkout the next [Tutorial](https://github.com/Sarabor/Grafana/tree/main/test) to learn how to test your dashboards without deploying them.
 
