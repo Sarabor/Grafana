@@ -7,13 +7,13 @@ if [[ -z "${DASHBOARD}" ]]; then
         exit 1
 fi
 
-JSONNET_PATH=$grafonnet \
+JSONNET_PATH="${grafonnet}" \
 jsonnet "${DASHBOARD}" > dashboard.json
 
 resp=$(mktemp)
 
 payload="{\"dashboard\": $(jq . dashboard.json), \"overwrite\": true}"
-resp=$(curl -X POST --insecure -H "Authorization: Bearer $AUTH" \
+resp=$(curl -X POST --insecure -H "Authorization: Bearer "${AUTH}"" \
 -H "Content-Type: application/json" \
 -d "${payload}" \
 "http://localhost:"${GRAFANA}"/api/dashboards/db")
@@ -24,7 +24,7 @@ then
     echo $'\n''Dashboard successfully deployed!'
 else
     echo $'\n''Something went wrong. Full Message:'
-    echo $resp
+    echo $'\n'$resp
 fi
 
 
