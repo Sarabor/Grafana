@@ -16,7 +16,7 @@ In this tutorial we will create an authorization token to access the Grafana API
 
 Create or request an Authorization Token to use the Grafana API to import dashboards.
 This step is necessary to use the Grafana API.
-To get create a token insert a name for the token in \<Tokenname\> and execute in Git Bash:
+To create a token insert a name for the token in \<Tokenname\> and execute in Git Bash:
 ```shell
 curl -X POST -H "Content-Type: application/json" -d '{"name":"<Tokenname>", "role": "Admin"}' http://admin:admin@localhost:3000/api/auth/keys
 ```
