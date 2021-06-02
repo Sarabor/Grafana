@@ -10,7 +10,7 @@ dashboard.new('HelloPanel!')
         title='HelloWorld',
         mode='html',
         content=
-            '
+         '
          <!DOCTYPE html>
          <html>
          <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -29,10 +29,7 @@ dashboard.new('HelloPanel!')
 
          </body>
          </html>
-
-
-
-            '
+          '
         ),
            gridPos={
                     x: 0,
