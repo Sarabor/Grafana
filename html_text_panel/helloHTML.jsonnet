@@ -1,36 +1,43 @@
-## SQL
-
-This example shows Grafonnet code with a simple SQL query. To write your own Grafana dashboard which uses a SQL query, you first need to connect Grafana to a datasource that accepts SQL queries. Then you can write normal SQL between the _''_, after the _sql.target_. Note that you need a column named "time". Grafana automatically searches a column named "time" when creating the dashboard. 
-
-```jsonnet
 local grafana = import 'grafonnet/grafana.libsonnet';
 local dashboard = grafana.dashboard;
-local table = grafana.tablePanel;	#import the tools you want to use				
-local sql = grafana.sql;		#import sql utility
+local text = grafana.text;	#import the tools you want to use
 
-dashboard.new(
-    title = 'SQL_Dashboard',
+dashboard.new('HelloPanel!')
+
+
+.addPanel(					#addPanel adds a row in which you can put panels via the parameters
+    text.new(				#the first paramater is the panel type eg. text, graph, table
+        title='HelloWorld',
+        mode='html',
+        content=
+            '
+         <!DOCTYPE html>
+         <html>
+         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+         <body>
+         <img src="https://cdn1.vogel.de/unsafe/fit-in/1000x0/images.vogel.de/vogelonline/bdb/1792100/1792191/original.jpg" alt="alternatetext">
+         <h1 style="color:blue;text-align:center;">This is a heading</h1>
+         <p style="color:red;">This is a paragraph.</p>
+
+        <p id="demo">A Paragraph.</p>
+
+        <button type="button" onclick="myFunction()">Try it</button>
+
+        <p>(myFunction is stored in an external file called "myScript.js")</p>
+
+         <script src="https://www.w3schools.com/js/myScript.js"></script>
+
+         </body>
+         </html>
+
+
+
+            '
+        ),
+           gridPos={
+                    x: 0,
+                    y: 0,
+                    w: 24,
+                    h: 48,			#the second parameter is optional. It sets the position and the dimensions of the panel
+        		}
 )
-
-
-
-.addPanel(				#addPanel adds a row in which you can put panels via the parameters						
-    table.new(				#the first paramater is the panel type eg. text, graph, table
-        title='Tabelle',
-    )
-    .addTarget(                         #add a target for the table
-        sql.target(                     #declare the target to be a sql query, insert sql query between ' '
-           'SELECT                     
-                column AS "time",	#Grafana searches for a column named "time" and gives an error when it's not found
-		column 			#you need at least two columns for Grafana to show you the data
-            FROM data',
-        )
-    ),     
-        gridPos={
-            x: 0,
-            y: 0,
-            w: 24,
-            h: 48,			#the second parameter is optional. It sets the position and the dimensions of the panel
-		} 
-)   
-```
