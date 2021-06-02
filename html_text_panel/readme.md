@@ -1,4 +1,4 @@
-To use HTML set GF_PANEL_SANITIZE_HTML=true under environment in your docker-compose.yaml.
+To use HTML set GF_PANELS_DISABLE_SANTIZE_HTML=true under environment in your docker-compose.yaml.
 This will enable the text panel to display HTML.
 
 Once you have done this, you can create a text panel as usual and in content write your html code. There are some things that you have to keep in mind when using the text panel for html with Grafonnet though.
