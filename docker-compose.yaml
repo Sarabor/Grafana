@@ -6,28 +6,14 @@ services:
     restart: always
     ports:
       - "4000:3000"
-    #environment:                                        #uncomment if you want to change env variables
+    environment:                                        #uncomment if you want to change env variables
       #- HTTPS_PROXY=<proxy>:<port>                      #uncomment if you have a proxy
-      #- GF_INSTALL_PLUGINS=grafana-piechart-panel,vonage-status-panel #uncomment if you want to install plugins
+      - GF_INSTALL_PLUGINS=gapit-htmlgraphics-panel #uncomment if you want to install plugins
     volumes:
       - grafana-storage:/var/lib/grafana
 #    Für Provisioning
 #      - type: bind
 #        source: ./provisioning
 #        target: /etc/grafana/provisioning
-  postgres_db:
-    container_name: postgres
-    image: postgres:12.1
-    restart: always
-    ports:
-      - 5432:5432
-    environment:
-      POSTGRES_USER: dev
-      POSTGRES_PASSWORD: dev
-      POSTGRES_DB: test_data
-      #PGDATA: /tmp
-    volumes:
-      - ./postgres-test-datenbank/docker-entrypoint-initdb.d/:/docker-entrypoint-initdb.d
-      - ./postgres-test-datenbank/data/:/tmp/data      
 volumes:
   grafana-storage:
