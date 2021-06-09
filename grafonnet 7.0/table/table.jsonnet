@@ -4,7 +4,6 @@ local table = grafana.panel.table;	#import the tools you want to use
 
 dashboard.new(
     title ='HelloDashboard!',
-    editable = false,
 )
 
 
@@ -21,8 +20,23 @@ dashboard.new(
         y = 0,
     )
     .setFieldConfig(
-        unit = "Celsius",
+        unit = "celsius",
         width = 'auto',
     )
-
+    .addOverride(
+        matcher =  {id: "byName", options: "Time"},
+        properties = [
+            {
+             "id": "color",
+              "value": {
+                "mode": "fixed",
+                "fixedColor": "blue"
+              }
+            },
+            {
+             "id": "displayName",
+             "value": "TEST"
+             }
+         ]
+    )
 )

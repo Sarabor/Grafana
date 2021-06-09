@@ -1,0 +1,35 @@
+{
+   "editable": true,
+   "graphTooltip": 0,
+   "panels": [
+      {
+         "datasource": "TestData DB",
+         "description": "A sample table",
+         "fieldConfig": {
+            "defaults": {
+               "custom": {
+                  "width": "auto"
+               },
+               "thresholds": {
+                  "mode": "absolute"
+               },
+               "unit": "Celsius"
+            }
+         },
+         "gridPos": {
+            "h": 40,
+            "w": 20,
+            "x": 0,
+            "y": 0
+         },
+         "id": 2,
+         "title": "HelloTable",
+         "transparent": false,
+         "type": "table"
+      }
+   ],
+   "schemaVersion": 25,
+   "style": "dark",
+   "tags": [ ],
+   "title": "HelloDashboard!"
+}
