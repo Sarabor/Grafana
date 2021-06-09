@@ -1,4 +1,4 @@
-local grafana = import 'grafonnet/grafana.libsonnet';
+local grafana = import 'grafonnet-7.0/grafana.libsonnet';
 local dashboard = grafana.dashboard;
 local text = grafana.text;	#import the tools you want to use				
 
