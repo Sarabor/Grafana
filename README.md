@@ -27,6 +27,8 @@ Everything you need to get started with Grafonnet.
 
 ## Installation Guide
 
+**The console commands are all Linux commands. You can not use the shown commands for CMD or Powershell. I recommend Git Bash if you are using Windows**
+
 First clone this repository. You will need the files for later steps.
 
 ### Jsonnet
