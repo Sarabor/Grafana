@@ -3,7 +3,7 @@ local dashboard = grafana.dashboard;
 local text = grafana.panel.text;	#import the tools you want to use
 
 dashboard.new(
-    title ='HelloPanel!',
+    title ='HelloDashboard!',
     editable = false,
 )
 
